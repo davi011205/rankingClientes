@@ -1,59 +1,81 @@
-.homeContainer {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 2px solid black;
-}
+@media (min-width: 320px) and (max-width: 600px){
+    
+    .homeContainer {
+        --corFundo: rgba(255, 255, 255, 0.914);
+        --corTexto: black;
+        --corDetalhes: #10058c;
+        --corTeste:rgb(13, 3, 120)c;
+        --corHover: #d0c6e6;
 
-header {
-   
-   border: 2px solid red;
-   width: 100%;
-}
+        /* border: 2px solid #000000; */
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
 
-.ranking {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    /* border: 3px solid orange; */
-    width: 20%;
+        header {
+            /* border: 2px solid red; */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
 
-    .podio {
-        /* border: 2px solid black; */
-        width: 100%;
-        height: 150px;
-        display: flex;
-        justify-content: center;
-        align-items: end;
-        
-
-        div {
-            background-color: blanchedalmond;
-            width: 100px;
-            text-align: center;
-
-            &:nth-child(1){
-                height: 60%;
+            div {
+                /* border: 2px solid orange; */
+                display: flex;
+                align-self: flex-start;
             }
 
-            &:nth-child(2) {
-                height: 100%;
+            svg {
+                width: 23px;
+                z-index: 1;
+                margin: 4px 4px 0 4px;
+                cursor: pointer;
             }
 
-            &:last-child {
-                height: 55%;
+            .historico {
+
+                .displayHistorico {
+                    background-color: #0000004e;
+                    width: 100%;
+                    position: absolute;
+                    height: 100%;
+
+                    .historicoPontos {
+                        background-color: rgb(255, 255, 255);
+                        height: 100%;
+                        width: 65%;
+                        padding-top: 2vh;
+                        /* border: 5px solid black; */
+                        display: flex;
+                        flex-direction: column;
+
+                        .tituloHistorico, .tabelaHistorico  {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                        }
+                    }
+                }
             }
         }
-    }
 
+        table {
+            
+            tbody {
+                tr:nth-child(odd) {
+                    background-color: var(--corHover);
+                }
+            }
+        }
 
-    table {
-        border-collapse: collapse;
-        width: 100%;
-    
-        th, td, tr{
-            border: 1px solid black;
+        main {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+
+            h3 {
+                margin: 0;
+            }
         }
     }
 }
