@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../scripts/firebaseConfig'; // Importa a configuração do Firestore
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import '../HomeCliente/home.css';
 
 const HomeCliente = () => {
@@ -9,6 +10,8 @@ const HomeCliente = () => {
   const [showHistorico, setShowHistorico] = useState(false);
   const [rankingClientes, setRankingClientes] = useState([]);
   const auth = getAuth();
+  const navigate = useNavigate();
+
 
   // Carregar histórico do cliente logado
   useEffect(() => {
@@ -62,6 +65,15 @@ const HomeCliente = () => {
     fetchRankingClientes(); // Chama a função para buscar o ranking
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/'); // Redireciona para a página de login após logout
+    } catch (error) {
+      console.error("Erro ao sair:", error.message);
+    }
+  };
+
   return (
     <div className="homeContainer">
       <header>
@@ -100,11 +112,10 @@ const HomeCliente = () => {
           )}
         </div>
           <h2>Promoção Top 10 de natal</h2>
-          <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg></div>
+          <div onClick={handleLogout}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-128-128c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 192 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l210.7 0-73.4 73.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l128-128zM160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32L96 32C43 32 0 75 0 128L0 384c0 53 43 96 96 96l64 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-64 0c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32l64 0z"/></svg></div>
       </header>
 
       <main>
-        <div className="rankinkPodio"></div>
         <div className="ranking">
           <h3>Ranking de Clientes</h3>
           <table>
@@ -112,7 +123,7 @@ const HomeCliente = () => {
               <tr>
                 <th>Posição</th>
                 <th>Nome</th>
-                <th>Pontos Totais</th>
+                <th>Pontos</th>
               </tr>
             </thead>
             <tbody>
