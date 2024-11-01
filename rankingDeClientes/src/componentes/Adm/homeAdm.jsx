@@ -17,6 +17,7 @@ const Adm = () => {
   };
 
   return (
+    
     <div className="admContainer">
       <header>
         <h2 style={{fontSize: '100px'}}>Área Administrativa</h2>

@@ -11,15 +11,14 @@ const HomeCliente = () => {
   const [rankingClientes, setRankingClientes] = useState([]);
   const auth = getAuth();
   const navigate = useNavigate();
-
-
+  
+  
   // Carregar histórico do cliente logado
   useEffect(() => {
     const fetchHistoricoPontos = async () => {
       const user = auth.currentUser; // Obtém o usuário logado
       
       if (user) {
-        console.log(user)
         const clienteRef = doc(db, 'clientes', user.uid); // Referência ao documento do cliente logado
         const clienteDoc = await getDoc(clienteRef); // Obtém os dados do cliente
 
