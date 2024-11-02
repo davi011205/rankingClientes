@@ -35,7 +35,12 @@ const Login = () => {
         });
       }
 
-      navigate('/home');
+      // Verifica se o email corresponde ao administrador e redireciona para a rota apropriada
+      if (email === 'exemple@gmail.com') {
+        navigate('/adm');
+      } else {
+        navigate('/home');
+      }
     } catch (error) {
       setError(error.message);
     }
