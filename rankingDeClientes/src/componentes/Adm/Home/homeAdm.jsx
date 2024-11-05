@@ -30,9 +30,9 @@ const Adm = () => {
           <h2>Promoção Top 10 de natal</h2>
       </header>
       <main>
-        <div onClick={handleCadastrarPontos}>Cadastrar Pontos</div>
-        <div>CadastrarCliente</div>
-        <div>Lista de Clientes</div>
+        <div className='opcoesAdm' onClick={handleCadastrarPontos}>Cadastrar Pontos</div>
+        <div className='opcoesAdm'>CadastrarCliente</div>
+        <div className='opcoesAdm'>Lista de Clientes</div>
 
         {showCadastroPontos && <CadastroPontos />} {/* Renderiza o componente de cadastro de pontos se o estado for verdadeiro */}
       </main>

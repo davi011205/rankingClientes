@@ -6,6 +6,8 @@
         --corDetalhes: #10058c;
         --corTeste:rgb(13, 3, 120)c;
         --corHover: #d0c6e6;
+       --corDisplay: #0000004e;
+
 
         /* border: 2px solid #000000; */
         min-height: 100vh;
@@ -39,7 +41,7 @@
             .historico {
 
                 .displayHistorico {
-                    background-color: #0000004e;
+                    background-color: var(--corDisplay);
                     width: 100%;
                     position: absolute;
                     /* min-height: 100vh; */

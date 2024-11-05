@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'; 
 import { db } from '../../scripts/firebaseConfig'; // Importar o Firestore configurado 
 import { collection, getDocs, doc, updateDoc, getDoc } from 'firebase/firestore';
-
+import './pontos.css'
 const cadastroPontos = () => {
   const [clientes, setClientes] = useState([]); 
   const [selectedCliente, setSelectedCliente] = useState(''); 
@@ -9,9 +9,17 @@ const cadastroPontos = () => {
   const [dataVenda, setDataVenda] = useState(''); 
   const [multiplicador, setMultiplicador] = useState(1); 
   const [pontosGerados, setPontosGerados] = useState(0); 
-  const [pontosTotais, setPontosTotais] = useState(0);
 
-  // Função para carregar os clientes da coleção 'clientes'
+
+  const handleLimpar = () => {
+    setSelectedCliente('');
+    setDataVenda('');
+    setValorVenda(0);
+    setMultiplicador(1);
+    setPontosGerados(0);
+  };
+
+  // Função para carregar os clientes
   useEffect(() => {
     const fetchClientes = async () => {
       const clientesSnapshot = await getDocs(collection(db, 'clientes'));
@@ -25,7 +33,7 @@ const cadastroPontos = () => {
     fetchClientes();
   }, []);
 
-  // Atualiza os pontos gerados quando valorVenda ou multiplicador mudam
+  // Funcao para calcular os pontos gerados pela venda
   useEffect(() => {
     const valorPonto = 50;
     const reaisPorPonto = 25;
@@ -34,7 +42,7 @@ const cadastroPontos = () => {
     setPontosGerados(pontos);
   }, [valorVenda, multiplicador]);
 
-  // Função para somar os pontos totais
+  // Função para somar os pontos totais do cliente
   const calcularPontosTotais = (pontosArray) => {
     const soma = pontosArray.reduce((total, ponto) => total + ponto.quantidadePonto, 0);
     return soma;
@@ -62,8 +70,8 @@ const cadastroPontos = () => {
 
       // Atualiza o cliente no Firebase com os novos pontos e o pontosTotais
       await updateDoc(clienteRef, {
-        pontos: novosPontos, // Atualiza o array de pontos
-        pontosTotais: pontosTotaisCalculado, // Atualiza o total de pontos
+        pontos: novosPontos, 
+        pontosTotais: pontosTotaisCalculado, 
       });
 
       alert('Pontos salvos com sucesso!');
@@ -73,54 +81,71 @@ const cadastroPontos = () => {
     }
   };
 
+
   return (
-    <div>
-      <h2>Cadastrar Pontos</h2>
+      <div className='containerCadPontos'>
+        <h2>Cadastrar Pontos</h2>
 
-      <label>Selecione o Cliente:</label>
-      <select
-        value={selectedCliente}
-        onChange={(e) => setSelectedCliente(e.target.value)}
-      >
-        <option value="">Selecione um cliente</option>
-        {clientes.map((cliente) => (
-          <option key={cliente.id} value={cliente.id}>
-            {cliente.nome}
-          </option>
-        ))}
-      </select>
+        <div className="formCadPontos">
+          <div id='cliente'>
+            <label>Selecione o Cliente:</label>
+            <select
+              value={selectedCliente}
+              onChange={(e) => setSelectedCliente(e.target.value)}
+            >
+              <option value="">Selecione um cliente</option>
+              {clientes.map((cliente) => (
+                <option key={cliente.id} value={cliente.id}>
+                  {cliente.nome}
+                </option>
+              ))}
+            </select>
+          </div>
 
-      <label>Data da Venda:</label>
-      <input
-        type="date"
-        value={dataVenda}
-        onChange={(e) => setDataVenda(e.target.value)}
-      />
+          <div id='venda'>
+            <div>
+              <label>Data da Venda:</label>
+              <input
+                type="date"
+                value={dataVenda}
+                onChange={(e) => setDataVenda(e.target.value)}
+              />
+            </div>
+            <div>
+              <label>Valor:</label>
+              <input
+                type="number"
+                value={valorVenda}
+                onChange={(e) => setValorVenda(parseFloat(e.target.value))}
+              />
+            </div>
+          </div>
 
-      <label>Valor da Venda:</label>
-      <input
-        type="number"
-        value={valorVenda}
-        onChange={(e) => setValorVenda(parseFloat(e.target.value))}
-      />
+          <div id='pontos'>
+            <div>
+              <label>Multiplicador:</label>
+              <select
+                value={multiplicador}
+                onChange={(e) => setMultiplicador(parseFloat(e.target.value))}
+              >
+                <option value={1}>x1</option>
+                <option value={2}>x2</option>
+                <option value={3}>x3</option>
+              </select>
+            </div>
 
-      <label>Multiplicador de Pontos:</label>
-      <select
-        value={multiplicador}
-        onChange={(e) => setMultiplicador(parseFloat(e.target.value))}
-      >
-        <option value={1}>x1</option>
-        <option value={2}>x2</option>
-        <option value={3}>x3</option>
-      </select>
+            <div>
+              <label>Pontos Gerados:</label>
+              <input type="number" value={pontosGerados} readOnly />
+            </div>
+          </div>
 
-      <label>Pontos Gerados:</label>
-      <input type="number" value={pontosGerados} readOnly />
-
-      <button onClick={handleSalvarPontos}>Salvar Pontos</button>
-
-      <h3>Pontos Totais: {pontosTotais}</h3>
-    </div>
+          <div id="botoes">
+            <button onClick={handleSalvarPontos}>Salvar Pontos</button>
+            <button onClick={handleLimpar}>Limpar</button>
+          </div>
+        </div>
+      </div>
   );
 };
 
