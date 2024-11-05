@@ -36,7 +36,7 @@ const Login = () => {
       }
 
       // Verifica se o email corresponde ao administrador e redireciona para a rota apropriada
-      if (email === 'exemple@gmail.com') {
+      if (email === 'davias01122005@gmail.com') {
         navigate('/adm');
       } else {
         navigate('/home');

@@ -5,11 +5,11 @@ import { auth } from './componentes/scripts/firebaseConfig'; // Importa o auth c
 
 import Login from './componentes/Login/login';
 import Home from './componentes/HomeCliente/home';
-import CadastroCliente from './componentes/Adm/cadastroCliente';
-import CadastroPontos from './componentes/Adm/cadastroPontos';
-import EditarPontos from './componentes/Adm/editaPontos';
-import EditarCliente from './componentes/Adm/editarCliente';
-import Adm from './componentes/Adm/homeAdm';
+import CadastroCliente from './componentes/Adm/Clientes/cadastroCliente';
+import CadastroPontos from './componentes/Adm/Pontos/cadastroPontos';
+import EditarPontos from './componentes/Adm/Pontos/editarPontos';
+import EditarCliente from './componentes/Adm/Clientes/editarCliente';
+import Adm from './componentes/Adm/Home/homeAdm';
 
 function App() {
   const [user, setUser] = useState(null);

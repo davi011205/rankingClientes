@@ -69,6 +69,11 @@
                 tr:nth-child(odd) {
                     background-color: var(--corHover);
                 }
+
+                svg {
+                    width: 20px;
+                }
+
             }
         }
 
