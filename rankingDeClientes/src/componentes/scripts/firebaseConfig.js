@@ -2,13 +2,21 @@ import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth'; // Importar Auth
 
+const ENVapiKey = import.meta.env.VITE_APIKEY;
+const ENVauthDomain = import.meta.env.VITE_AUTHDOMAIN;
+const ENVprojectId = import.meta.env.VITE_PROJECTID;
+const ENVstorageBucket = import.meta.env.VITE_STORAGEBUCKET;
+const ENVmessagingSenderId = import.meta.env.VITE_MESSAGINSENDERID;
+const ENVappId = import.meta.env.VITE_APPID;
+
+
 const firebaseConfig = {
-  apiKey: "AIzaSyBgugspLfac5YietW85omA_4X9WbmmOsW0",
-  authDomain: "rankingcli.firebaseapp.com",
-  projectId: "rankingcli",
-  storageBucket: "rankingcli.appspot.com",
-  messagingSenderId: "645056970671",
-  appId: "1:645056970671:web:3eb555990572eb5aa5395a"
+  apiKey: ENVapiKey,
+  authDomain: ENVauthDomain,
+  projectId: ENVprojectId,
+  storageBucket: ENVstorageBucket,
+  messagingSenderId: ENVmessagingSenderId,
+  appId: ENVappId
 };
 
 const app = initializeApp(firebaseConfig);

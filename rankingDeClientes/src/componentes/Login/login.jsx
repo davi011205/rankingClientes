@@ -4,6 +4,8 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { doc, setDoc, getDoc } from 'firebase/firestore'; // Importa funções do Firestore
 import { useNavigate } from 'react-router-dom';
 import './login.css';
+const emailAdm1 = import.meta.env.VITE_EMAIL_ADM1;
+const emailAdm2 = import.meta.env.VITE_EMAIL_ADM2;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,7 +38,7 @@ const Login = () => {
       }
 
       // Verifica se o email corresponde ao administrador e redireciona para a rota apropriada
-      if (email === 'davias01122005@gmail.com') {
+      if (email === emailAdm1 || email === emailAdm2 ) {
         navigate('/adm');
       } else {
         navigate('/home');
