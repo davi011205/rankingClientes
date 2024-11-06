@@ -67,6 +67,18 @@
 
         table {
 
+            caption {
+                text-align: right;
+
+                svg { 
+                    width: 20px;
+                    padding: 0;
+                }
+
+                svg:hover {
+                    animation: rotation linear 2s;
+                }
+            }
             tbody {
                 tr:nth-child(odd) {
                     background-color: var(--corHover);
@@ -89,4 +101,13 @@
             }
         }
     }
+}
+
+@keyframes rotation {
+    0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
