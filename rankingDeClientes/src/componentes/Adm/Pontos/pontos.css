@@ -68,8 +68,82 @@
             flex-wrap: wrap;
             gap: 4px;
         }
-
        
     }
 }   
 
+@media (min-width: 320px) and (max-width: 600px){
+    .containerCadPontos {
+        --borderRadius: 10px;
+        --alturaInput: 2rem;
+    
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-color: var(--corFundo);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        .formCadPontos {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 90%;
+            padding: 10px;
+            background-color: var(--corHover);
+    
+    
+            #cliente {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+    
+                select {
+                    width: 100%;
+                    height: var(--alturaInput);
+                    background-color: var(--corFundo);
+                    color: var(--corTexto);
+                    border-radius: var(--borderRadius);
+                }
+    
+            }
+    
+            #venda, #pontos {
+                /* border: 2px solid red; */
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                width: 100%;
+    
+                div {
+                    width: 50%;
+                    /* border: 2px solid blue; */
+                    display: flex;
+                    flex-direction: column;
+                    align-items: start;
+    
+                    input, select {
+                        padding: 0 ;
+                        width: 100%;
+                        height: var(--alturaInput);
+                        background-color: var(--corFundo);
+                        color: var(--corTexto);
+                        border-radius: var(--borderRadius);
+    
+                    }
+                }
+            }
+    
+    
+            #botoes {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 4px;
+            }
+           
+        }
+    }   
+}
