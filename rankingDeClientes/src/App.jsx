@@ -5,7 +5,7 @@ import { auth } from './componentes/scripts/firebaseConfig'; // Importa o auth c
 
 import Login from './componentes/Login/login';
 import Home from './componentes/HomeCliente/home';
-import ListarCliente from './componentes/Adm/Clientes/cadastroCliente';
+import ListarCliente from './componentes/Adm/Clientes/listarCliente';
 import CadastroPontos from './componentes/Adm/Pontos/cadastroPontos';
 import EditarPontos from './componentes/Adm/Pontos/editarPontos';
 import EditarCliente from './componentes/Adm/Clientes/editarCliente';
