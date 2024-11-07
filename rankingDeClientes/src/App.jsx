@@ -5,7 +5,7 @@ import { auth } from './componentes/scripts/firebaseConfig'; // Importa o auth c
 
 import Login from './componentes/Login/login';
 import Home from './componentes/HomeCliente/home';
-import CadastroCliente from './componentes/Adm/Clientes/cadastroCliente';
+import ListarCliente from './componentes/Adm/Clientes/cadastroCliente';
 import CadastroPontos from './componentes/Adm/Pontos/cadastroPontos';
 import EditarPontos from './componentes/Adm/Pontos/editarPontos';
 import EditarCliente from './componentes/Adm/Clientes/editarCliente';
@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={user ? <Navigate to="/home" /> : <Login />} />
         <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
-        <Route path="/cadCliente" element={user ? <CadastroCliente /> : <Navigate to="/" />} />
+        <Route path="/listaCliente" element={user ? <ListarCliente /> : <Navigate to="/" />} />
         <Route path="/cadProduto" element={user ? <CadastroPontos /> : <Navigate to="/" />} />
         <Route path="/editCliente" element={user ? <EditarCliente /> : <Navigate to="/" />} />
         <Route path="/editProduto" element={user ? <EditarPontos /> : <Navigate to="/" />} />
