@@ -1,5 +1,74 @@
-@media (min-width: 320px) and (max-width: 600px){
+.containerLogin {
+    --corFundo: rgba(255, 255, 255, 0.914);
+    --corTexto: black;
+    --corDetalhes: #10058c;
+    --corTeste:rgb(13, 3, 120)c;
+    --corHover: #d0c6e6;
+
+
+
+    /* border: 2px solid red; */
+    /* display: flex; */
+    /* flex-wrap: wrap;
+    justify-content: center; */
+
+    .titulo {
+        margin-bottom: 4vh;
+        /* border:2px solid red; */
+        h1 {
+            font-size: 2rem;    
+        }
+    }
+
+    .login {
+        /* border: 2px solid red; */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+
+
+        .nomeCliente {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            
+            label {
+                width: 100%;
+            }
+
+            input {
+                padding: 0 ;
+                width: 100%;
+                height: 2rem;
+                background-color: var(--corFundo);
+                color: var(--corTexto);
+                border-radius: 20px;
+
+            }
+        }
     
+        .button {
+            border: 1px solid var(--corDetalhes);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            background-color: var(--corHover);
+            width: 50%;
+            cursor: pointer;
+            
+            svg {
+                width: 25px;
+                border-radius: 20px;
+                background-color: #bba1f1;
+                padding: 5px;
+            }
+        }
+    }
+}
+
+@media (min-width: 320px) and (max-width: 600px){
     .containerLogin {
         --corFundo: rgba(255, 255, 255, 0.914);
         --corTexto: black;
