@@ -1,5 +1,105 @@
+.homeContainer {
+    --corFundo: rgba(255, 255, 255, 0.914);
+    --corTexto: black;
+    --corDetalhes: #10058c;
+    --corTeste:rgb(13, 3, 120)c;
+    --corHover: #d0c6e6;
+   --corDisplay: #0000004e;
+
+    /* border: 2px solid #000000; */
+    min-height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+
+    header {
+        /* border: 2px solid red; */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+
+        div {
+            /* border: 2px solid orange; */
+            display: flex;
+            align-self: flex-start;
+        }
+
+        h2 {
+            padding-top: 10%;
+        }
+
+        svg {
+            width: 23px;
+            z-index: 1;
+            margin: 8px 8px 0 8px;
+            cursor: pointer;
+        }
+
+        .historico {
+
+            .displayHistorico {
+                background-color: var(--corDisplay);
+                width: 100%;
+                position: absolute;
+                /* min-height: 100vh; */
+
+                .historicoPontos {
+                    background-color: rgb(255, 255, 255);
+                    min-height: 100vh;
+                    width: 65%;
+                    padding-top: 2vh;
+                    /* border: 5px solid black; */
+                    display: flex;
+                    flex-direction: column;
+
+                    .tituloHistorico, .tabelaHistorico  {
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
+    table {
+
+        caption {
+            text-align: right;
+
+            svg { 
+                width: 20px;
+                padding: 0;
+            }
+
+            svg:hover {
+                animation: rotation linear 2s;
+            }
+        }
+        tbody {
+            tr:nth-child(odd) {
+                background-color: var(--corHover);
+            }
+
+            svg {
+                width: 20px;
+            }
+
+        }
+    }
+
+    main {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+
+        h3 {
+            margin: 0 0 2vh 0;
+        }
+    }
+}
+
 @media (min-width: 320px) and (max-width: 600px){
-    
     .homeContainer {
         --corFundo: rgba(255, 255, 255, 0.914);
         --corTexto: black;
@@ -7,7 +107,6 @@
         --corTeste:rgb(13, 3, 120)c;
         --corHover: #d0c6e6;
        --corDisplay: #0000004e;
-
 
         /* border: 2px solid #000000; */
         min-height: 100vh;
