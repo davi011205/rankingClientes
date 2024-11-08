@@ -39,7 +39,7 @@ const cadastroPontos = () => {
     const reaisPorPonto = 25;
     const pontos = (valorVenda / reaisPorPonto) * (valorPonto * multiplicador);
 
-    setPontosGerados(pontos);
+    setPontosGerados(Math.round(pontos));
   }, [valorVenda, multiplicador]);
 
   // Função para somar os pontos totais do cliente
