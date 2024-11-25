@@ -8,7 +8,6 @@ import Home from './componentes/HomeCliente/home';
 import ListarCliente from './componentes/Adm/Clientes/listarCliente';
 import CadastroPontos from './componentes/Adm/Pontos/cadastroPontos';
 import EditarPontos from './componentes/Adm/Pontos/editarPontos';
-import EditarCliente from './componentes/Adm/Clientes/editarCliente';
 import Adm from './componentes/Adm/Home/homeAdm';
 
 function App() {
@@ -33,7 +32,6 @@ function App() {
         <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
         <Route path="/listaCliente" element={user ? <ListarCliente /> : <Navigate to="/" />} />
         <Route path="/cadProduto" element={user ? <CadastroPontos /> : <Navigate to="/" />} />
-        <Route path="/editCliente" element={user ? <EditarCliente /> : <Navigate to="/" />} />
         <Route path="/editProduto" element={user ? <EditarPontos /> : <Navigate to="/" />} />
         <Route path="/adm" element={user ? <Adm /> : <Navigate to="/" />} />
       </Routes>
