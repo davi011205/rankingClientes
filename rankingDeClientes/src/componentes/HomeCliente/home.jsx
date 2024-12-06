@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../scripts/firebaseConfig'; // Importa a configuração do Firestore
 import { collection, getDocs, doc, getDoc } from 'firebase/firestore';
-import { getAuth, signOut } from 'firebase/auth';
+import { getAuth, signOut, onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import '../HomeCliente/home.css';
 
@@ -11,6 +11,25 @@ const HomeCliente = () => {
   const [rankingClientes, setRankingClientes] = useState([]);
   const auth = getAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    async function checkLogin() {
+        onAuthStateChanged(auth, (user) => {
+            if(user) {
+                console.log(user)
+                fetchRankingClientes();
+            } else {
+                console.log('nao tem usuario')
+            }
+        })
+    }
+    checkLogin()
+}, [])
+
+ // Carregar e organizar ranking de todos os clientes
+//  useEffect(() => {
+  
+// }, []);
   
   // Carregar e organizar ranking de todos os clientes
   const fetchRankingClientes = async () => {
@@ -58,10 +77,7 @@ const HomeCliente = () => {
     fetchHistoricoPontos(); // Chama a função para buscar o histórico
   }, [auth.currentUser]);
 
-  // Carregar e organizar ranking de todos os clientes
-  useEffect(() => {
-    fetchRankingClientes();
-  }, []);
+ 
 
   const handleLogout = async () => {
     try {
