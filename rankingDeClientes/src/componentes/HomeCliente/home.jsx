@@ -66,7 +66,7 @@ const HomeCliente = () => {
 
           // Mapeia o histórico para o formato necessário
           const historicoArray = pontosArray.map((ponto) => ({
-            dataPonto: new Date(ponto.dataPonto.seconds * 1000).toLocaleDateString(), // Converte timestamp para data legível
+            dataPonto: new Date(ponto.dataPonto).toLocaleDateString('pt-BR'),
             quantidadePonto: ponto.quantidadePonto,
           }));
           setHistoricoPontos(historicoArray); // Atualiza o estado com o histórico de pontos
